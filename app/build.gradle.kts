@@ -1,15 +1,16 @@
+// App module build.gradle.kts
 plugins {
-    alias(libs.plugins.android.application)
+    id("com.android.application")
 }
 
 android {
     namespace = "com.example.eventplannerapp"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.eventplannerapp"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -26,22 +27,31 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
+
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.6.1") // AppCompat
-    implementation("androidx.drawerlayout:drawerlayout:1.1.1") // DrawerLayout
-    implementation(libs.material)
-    implementation(libs.activity)
-    implementation(libs.constraintlayout)
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // MPAndroidChart dependency
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    // Room components - Using a stable version (2.6.1 instead of 2.7.1)
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    // Removed libs.room.common.jvm reference since it might be causing conflicts
+
+    // Lifecycle components
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

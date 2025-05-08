@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F5F5F5">
+    tools:context=".GuestListActivity">
 
-    <!-- Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/backButton"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:title="Guest List"
-        app:titleTextColor="@android:color/white"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        android:elevation="4dp" />
+        android:layout_height="wrap_content">
 
-    <!-- Content -->
-    <ScrollView
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Guest List" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,404 +30,188 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Status Cards Row -->
-            <LinearLayout
+            <!-- Search Bar -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                app:startIconDrawable="@drawable/ic_search">
 
-                <!-- Attending Card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp">
+                    android:hint="Search guests" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Guest Count Cards -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Guest Stats"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+                    <!-- Attending Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp"
-                        android:gravity="center"
-                        android:background="#8FE887">
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Attending:"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
                         <TextView
                             android:id="@+id/attendingCountTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="60"
-                            android:textSize="18sp"
+                            android:layout_marginEnd="8dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                             android:textStyle="bold"
-                            android:textColor="#000000" />
+                            tools:text="60" />
 
                         <TextView
+                            android:id="@+id/seeAllAttendingTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Attending"
-                            android:textSize="14sp"
-                            android:textColor="#000000" />
+                            android:text="See All"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/design_default_color_primary" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
-                <!-- Declined Card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="4dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp">
-
+                    <!-- Declined Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp"
-                        android:gravity="center"
-                        android:background="#FF8A80">
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Declined:"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
                         <TextView
                             android:id="@+id/declinedCountTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18sp"
+                            android:layout_marginEnd="8dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                             android:textStyle="bold"
-                            android:textColor="#000000" />
+                            tools:text="30" />
 
                         <TextView
+                            android:id="@+id/seeAllDeclinedTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Declined"
-                            android:textSize="14sp"
-                            android:textColor="#000000" />
+                            android:text="See All"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/design_default_color_primary" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
-                <!-- Pending Card -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp">
-
+                    <!-- Pending Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp"
-                        android:gravity="center"
-                        android:background="#FFE57F">
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Pending:"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
                         <TextView
                             android:id="@+id/pendingCountTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="10"
-                            android:textSize="18sp"
+                            android:layout_marginEnd="8dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                             android:textStyle="bold"
-                            android:textColor="#000000" />
+                            tools:text="10" />
 
                         <TextView
+                            android:id="@+id/seeAllPendingTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pending"
-                            android:textSize="14sp"
-                            android:textColor="#000000" />
+                            android:text="See All"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/design_default_color_primary" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
 
-            <!-- Total Guests -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total Guests"
-                    android:textSize="16sp"
-                    android:textColor="#000000" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/totalGuestsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
-            </LinearLayout>
-
-            <!-- Search Box -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_vertical"
-                    android:background="#FFEDF0F1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_menu_search"
-                        android:layout_marginStart="8dp" />
-
-                    <EditText
-                        android:id="@+id/searchEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Search"
-                        android:textSize="24sp"
-                        android:padding="8dp"
-                        android:inputType="text"
-                        android:importantForAutofill="no" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Attending Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Attending"
-                android:textSize="16sp"
-                android:textColor="#757575"
-                android:layout_marginBottom="8dp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
-
-                <!-- Barry Bruce -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    <!-- Total Row -->
                     <LinearLayout
-                        android:id="@+id/barryBruceCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="12dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@android:drawable/ic_menu_myplaces"
-                            android:layout_marginEnd="12dp" />
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Barry Bruce"
-                            android:textSize="16sp"
-                            android:textColor="#000000" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@android:drawable/checkbox_on_background"
-                            app:tint="#4CAF50" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#EEEEEE" />
-
-                    <!-- Allen Patrick -->
-                    <LinearLayout
-                        android:id="@+id/allenPatrickCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="12dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@android:drawable/ic_menu_myplaces"
-                            android:layout_marginEnd="12dp" />
+                            android:text="Total Guests:"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:id="@+id/totalGuestsTextView"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Allen Patrick"
-                            android:textSize="16sp"
-                            android:textColor="#000000" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@android:drawable/checkbox_on_background"
-                            app:tint="#4CAF50" />
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                            android:textStyle="bold"
+                            tools:text="100" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- See All Link -->
+            <!-- Guest List Section -->
             <TextView
-                android:id="@+id/seeAllAttendingTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#6200EE"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Declined Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Declined"
-                android:textSize="16sp"
-                android:textColor="#757575"
-                android:layout_marginBottom="8dp" />
-
-            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:text="Guest List"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
-                <!-- Tony Wallen -->
-                <LinearLayout
-                    android:id="@+id/tonyWallenCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_menu_myplaces"
-                        android:layout_marginEnd="12dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tony Wallen"
-                        android:textSize="16sp"
-                        android:textColor="#000000" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_delete"
-                        app:tint="#F44336" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- See All Link -->
-            <TextView
-                android:id="@+id/seeAllDeclinedTextView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/guestRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#6200EE"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Pending Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pending"
-                android:textSize="16sp"
-                android:textColor="#757575"
-                android:layout_marginBottom="8dp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
-
-                <!-- Chris Adam -->
-                <LinearLayout
-                    android:id="@+id/chrisAdamCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_menu_myplaces"
-                        android:layout_marginEnd="12dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Chris Adam"
-                        android:textSize="16sp"
-                        android:textColor="#000000" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_dialog_info"
-                        app:tint="#FF9800" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- See All Link -->
-            <TextView
-                android:id="@+id/seeAllPendingTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#6200EE"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:padding="8dp"
-                android:layout_marginBottom="16dp" />
+                tools:itemCount="4"
+                tools:listitem="@layout/item_guest" />
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add guest"
+        app:srcCompat="@drawable/ic_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

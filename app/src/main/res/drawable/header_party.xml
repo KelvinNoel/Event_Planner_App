@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Party hat -->
+    <path
+        android:fillColor="#FF4081"
+        android:pathData="M12,2l4,10h-8l4,-10z" />
+
+    <!-- Confetti dots -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M4,20a1,1 0 1,0 2,0a1,1 0 1,0 -2,0z" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M18,20a1,1 0 1,0 2,0a1,1 0 1,0 -2,0z" />
+    <path
+        android:fillColor="#03A9F4"
+        android:pathData="M10,22a1,1 0 1,0 2,0a1,1 0 1,0 -2,0z" />
+
+    <!-- Streamer -->
+    <path
+        android:fillColor="#9C27B0"
+        android:strokeWidth="0"
+        android:pathData="M6,15c1.5,1.5 4,1.5 5.5,0s4,-1.5 5.5,0" />
+</vector>

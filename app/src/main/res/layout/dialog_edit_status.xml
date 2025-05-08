@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Select guest status"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioAttending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Attending" />
+
+        <RadioButton
+            android:id="@+id/radioDeclined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Declined" />
+
+        <RadioButton
+            android:id="@+id/radioPending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pending" />
+    </RadioGroup>
+
+</LinearLayout>

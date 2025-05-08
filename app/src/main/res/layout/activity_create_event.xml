@@ -27,44 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Upload Image Container -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/uploadImageCard"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:contentPadding="18dp"
-            android:background="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/topAppBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@android:drawable/ic_menu_camera"
-                    app:tint="#9E9E9E" />
-
-                <TextView
-                    android:id="@+id/uploadText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Upload Image"
-                    android:textColor="#757575"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
         <!-- Event Name -->
         <TextView
             android:id="@+id/textEventName"
@@ -73,8 +35,8 @@
             android:text="Event Name"
             android:textSize="14sp"
             android:textColor="#000000"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/uploadImageCard"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/topAppBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -93,7 +55,7 @@
                 android:hint="Enter event name" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Date and Time Row -->
+        <!-- Date and Time -->
         <LinearLayout
             android:id="@+id/dateTimeRow"
             android:layout_width="0dp"
@@ -217,6 +179,92 @@
                 android:minLines="3"
                 android:maxLines="5" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Budget -->
+        <TextView
+            android:id="@+id/textBudget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Budget"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/budgetInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textBudget"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBudget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="Enter budget amount" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Task -->
+        <TextView
+            android:id="@+id/textTask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Task"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/budgetInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/taskInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textTask"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter task details" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Guest -->
+        <TextView
+            android:id="@+id/textGuest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Guest"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/taskInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/guestInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textGuest"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextGuest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter guest name or count" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <!-- Create Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonCreateEvent"
@@ -229,10 +277,8 @@
             app:iconPadding="8dp"
             android:backgroundTint="?attr/colorPrimary"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/guestInputLayout"
             app:layout_constraintEnd_toEndOf="parent" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

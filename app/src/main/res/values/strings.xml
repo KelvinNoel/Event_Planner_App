@@ -3,4 +3,14 @@
     <string name="category">Category</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="event_categories">
+        <item>Birthday</item>
+        <item>Wedding</item>
+        <item>Meeting</item>
+        <item>Conference</item>
+        <item>Party</item>
+        <item>Dinner</item>
+        <item>Workshop</item>
+        <item>Other</item>
+    </string-array>
 </resources>

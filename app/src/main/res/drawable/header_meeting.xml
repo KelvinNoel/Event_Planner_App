@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Calendar-like frame -->
+    <path
+        android:fillColor="#3F51B5"
+        android:pathData="M3,4h18c1.1,0 2,0.9 2,2v14c0,1.1 -0.9,2 -2,2H3c-1.1,0 -2,-0.9 -2,-2V6c0,-1.1 0.9,-2 2,-2zM3,8v12h18V8H3z" />
+
+    <!-- People icons -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M7,13c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM17,13c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,15c-2.33,0 -7,1.17 -7,3.5V20h14v-1.5c0,-2.33 -4.67,-3.5 -7,-3.5z" />
+</vector>
